@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>KNN Prediction</title>
+    <h1> Using Logistic Regression </h1>
+    <h3>By Adesh Gurjar (0901IO211002)</h3>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .login {
+            width: 600px;
+            margin: 100px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+         h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #88b331;
+        }
+        h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #566a2f;
+        }
+
+        .login h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .login form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login form .input-group {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .login form .input-group label {
+            min-width: 150px;
+            padding: 10px;
+            text-align: right;
+        }
+
+        .login form .input-group input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            margin-left: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        .login form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .login form button:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+       <h1>Intrusion Detection Prediction</h1>
+   
+        <!-- Main Input For Receiving Query to our ML -->
+       <form action="{{ url_for('prediction2')}}" method="post">
+         <div class="input-group">
+             <label for="protocol_type">Protocol Type:</label>
+             <input type="text" name="protocol_type" placeholder="Enter Protocol Type" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="service">Service:</label>
+             <input type="text" name="service" placeholder="Enter Service" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="flag">Flag:</label>
+             <input type="text" name="flag" placeholder="Enter Flag" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="src_bytes">Source Bytes:</label>
+             <input type="text" name="src_bytes" placeholder="Enter Source Bytes" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="dst_bytes">Destination Bytes:</label>
+             <input type="text" name="dst_bytes" placeholder="Enter Destination Bytes" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="count">Count:</label>
+             <input type="text" name="count" placeholder="Enter Count" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="same_srv_rate">Same Service Rate:</label>
+             <input type="text" name="same_srv_rate" placeholder="Enter Same Service Rate" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="diff_srv_rate">Different Service Rate:</label>
+             <input type="text" name="diff_srv_rate" placeholder="Enter Different Service Rate" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="dst_host_srv_count">Destination Host Service Count:</label>
+             <input type="text" name="dst_host_srv_count" placeholder="Enter Destination Host Service Count" required="required" />
+         </div>
+         <div class="input-group">
+             <label for="dst_host_same_srv_rate">Destination Host Same Service Rate:</label>
+             <input type="text" name="dst_host_same_srv_rate" placeholder="Enter Destination Host Same Service Rate" required="required" />
+         </div>
+   
+         <button type="submit">Predict</button>
+       </form>
+       <h2>Instruction Detection: {{result}}</h2>
+   </div>
+</body>
+</html>
